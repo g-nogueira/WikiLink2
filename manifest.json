@@ -1,0 +1,40 @@
+{
+	"manifest_version": 2,
+	"name": "WikiLink2",
+	"description": "__MSG_Manifest_Description__",
+	"version": "0.0.0",
+	"icons": {
+		"16": "Resources/Images/01wikilink16.png",
+		"48": "Resources/Images/01wikilink48.png",
+		"128": "Resources/Images/01wikilink128.png"
+	},
+	"options_page": "Pages/Options/index.html",
+	"background": {
+		"scripts": [ "Background/eventPage.js" ],
+		"persistence": true
+	},
+	"default_locale": "en",
+	"browser_action": {
+		"default_locale": "en",
+		"default_popup": "Pages/BrowserAction/index.html",
+		"default_title": "__MSG_Manifest_BrowserAction_Description__"
+	},
+	"content_scripts": [{
+		"matches": [
+			"<all_urls>"
+		],
+		"js": [
+			"Pages/ContentScripts/index.js"
+		],
+		"css": [
+			"Pages/ContentScripts/styles.css"
+		],
+		"run_at": "document_end"
+	}],
+	"permissions": [
+		"storage",
+		"tabs",
+		"<all_urls>"
+	],
+	"content_security_policy": "script-src 'self' https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js; object-src 'self'"
+}
