@@ -4,7 +4,7 @@ This is the Browser Action folder. It holds the files that run in the, well, Bro
 > The toolbar button (browser action) is very like the address bar button (page action).
 
 
-More info in the [MDN Web Docs][1] or in the [Chrome for Developers Page][2].
+For more information, see [Browser Action][1] in MDN Web Docs or [Browser Action][2] in the Chrome for Developers page.
 
 [1]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/browserAction
 [2]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/browserAction

@@ -3,7 +3,7 @@ This is the Background folder. It holds the files that run in, well, the backgro
 > Extensions are event based programs used to modify or enhance the Chrome browsing experience. Events are browser triggers, such as navigating to a new page, removing a bookmark, or closing a tab. Extensions monitor these events in their background script, then react with specified instructions.
 
 
-More info in the [Chrome for Developers Page](https://developer.chrome.com/extensions/background_pages).
+For more information, see [Background Pages](https://developer.chrome.com/extensions/background_pages) in the Chrome for Developers page.
 
 
 ## Using Functions Defined in the Background
@@ -25,4 +25,4 @@ var backgroundWindows = chrome.extension.getBackgroundPage();
 console.log(backgroundWindows.backgroundFunction()); 
 ```
 
-See more about [getBackgroundPage](https://developer.chrome.com/extensions/runtime#method-getBackgroundPage).
+For more information, see [getBackgroundPage](https://developer.chrome.com/extensions/runtime#method-getBackgroundPage) in the Chrome for Developers page.
