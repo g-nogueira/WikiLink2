@@ -28,15 +28,9 @@
 		"default_title": "__MSG_Manifest_BrowserAction_Description__"
 	},
 	"content_scripts": [{
-		"matches": [
-			"<all_urls>"
-		],
-		"js": [
-			"Pages/ContentScripts/index.js"
-		],
-		"css": [
-			"Pages/ContentScripts/styles.css"
-		],
+		"matches": ["<all_urls>"],
+		"js": ["Pages/ContentScripts/index.js"],
+		"css": ["Pages/ContentScripts/styles.css"],
 		"run_at": "document_end"
 	}],
 	"permissions": [
@@ -44,5 +38,8 @@
 		"tabs",
 		"<all_urls>"
 	],
-	"content_security_policy": "script-src 'self' https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js; object-src 'self'"
+	"web_accessible_resources": [
+		"Resources/Images/*"
+	],
+	"content_security_policy": "script-src 'self' https://stackpath.bootstrapcdn.com/* https://code.jquery.com/* https://cdnjs.cloudflare.com/*; object-src 'self'"
 }

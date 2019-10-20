@@ -11,13 +11,14 @@ class Seeding {
     }
 
     static seed() {
-
+        // Retrieving initial seed.
         var seed = Seeding._getSeed();
         var db = storage();
         var promises = [];
 
+        // Sending all storage_set requests.
         seed.forEach(data => promises.push(db.set(data)));
-        
+
         return Promise.all(promises);
     }
 

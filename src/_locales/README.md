@@ -11,11 +11,11 @@ For more information, see [chrome.i18n](https://developer.chrome.com/extensions/
 - [Detecting a Language](#Detecting-a-Language)
 
 ## Using i18n in HTML
-Every translatable text in HTML has to be inside a tag with the `data-i18n` property and the text itself has to be the name of a resource present in the `message.json`. Refer to the following example.
+Every translatable text in HTML has to be inside a tag with the `data-i18n` property with the value being the name of a resource present in the `message.json`. Refer to the following example.
 
 **index.html**
 ```html
-<div data-i18n="">Pages_Options_Title<div>
+<div data-i18n="Pages_Options_Title"><div>
 ```
 
 **messages.json**

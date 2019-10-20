@@ -1,0 +1,12 @@
+{
+    "typeAcquisition": {
+        "include": [
+            "jquery",
+            "chrome"
+        ],
+        "exclude": [
+            "node_modules"
+        ]
+    }
+
+}
