@@ -10,7 +10,15 @@
 	},
 	"options_page": "Pages/Options/index.html",
 	"background": {
-		"scripts": [ "Background/eventPage.js" ],
+		"scripts": [ 
+			"Background/Models/BaseClass.js",
+			"Background/Enums/KeyCode.js",
+			"Background/Models/UserPreference.js",
+			"Background/Data/storage.js",
+			"Background/API/userPreferences.js",
+			"Background/Data/Seeding.js",
+			"Background/init.js"
+		],
 		"persistence": true
 	},
 	"default_locale": "en",

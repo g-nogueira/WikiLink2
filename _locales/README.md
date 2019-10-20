@@ -8,6 +8,7 @@ For more information, see [chrome.i18n](https://developer.chrome.com/extensions/
 - [Using i18n in HTML](#Using-i18n-in-HTML)
 - [Using i18n in CSS](#Using-i18n-in-CSS)
 - [Using i18n in JavaScript](#Using-i18n-in-JavaScript)
+- [Detecting a Language](#Detecting-a-Language)
 
 ## Using i18n in HTML
 Every translatable text in HTML has to be inside a tag with the `data-i18n` property and the text itself has to be the name of a resource present in the `message.json`. Refer to the following example.
@@ -88,3 +89,29 @@ var errorWithCode = chrome.i18n.getMessage("error", [errorDetails, errorCode]);
     }
 }
 ```
+
+## Detecting a Language
+
+By default chrome itself has a language API. In this API is included the `i18n.detectLanguage` function. It receives an input text and outputs the language guess together with an `isReliable` paramenter. See the following example.
+
+The following code detects up to 3 languages from the given string and displays the result as strings separated by new lines.
+```js
+function detectLanguage(inputText) {
+    chrome.i18n.detectLanguage(inputText, (result) => {
+        var output = "";
+        var outputLang = "Detected Language: ";
+        var outputPercent = "Language Percentage: ";
+
+        result.languages.forEach( lang => {
+            outputLang += lang.language + " ";
+            outputPercent += lang.percentage + " ";
+        });
+
+        output = `${outputLang}\n${outputPercent}\nReliable: ${result.isReliable}`;
+        
+        document.getElementById("languageSpan").innerHTML = output;
+    });
+}
+```
+For more details on calling detectLanguage(inputText), see the [API reference](https://developer.chrome.com/extensions/i18n#method-detectLanguage).
+
