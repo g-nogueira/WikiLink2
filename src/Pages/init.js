@@ -6,7 +6,7 @@
         parseI18n();
     });
 
-    function parseResources(test) {
+    function parseResources() {
         var selector = "[data-rsc]"; 
         var attr = "data-rsc";
 

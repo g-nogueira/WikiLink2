@@ -4,9 +4,9 @@
 	"description": "__MSG_Manifest_Description__",
 	"version": "0.0.0",
 	"icons": {
-		"16": "Resources/Images/01wikilink16.png",
-		"48": "Resources/Images/01wikilink48.png",
-		"128": "Resources/Images/01wikilink128.png"
+		"16": "Resources/Images/BrowserAction/01wikilink16.png",
+		"48": "Resources/Images/BrowserAction/01wikilink48.png",
+		"128": "Resources/Images/BrowserAction/01wikilink128.png"
 	},
 	"options_page": "Pages/Options/index.html",
 	"background": {
@@ -41,5 +41,5 @@
 	"web_accessible_resources": [
 		"Resources/Images/*"
 	],
-	"content_security_policy": "script-src 'self' https://stackpath.bootstrapcdn.com/* https://code.jquery.com/* https://cdnjs.cloudflare.com/*; object-src 'self'"
+	"content_security_policy": "script-src 'self' https://stackpath.bootstrapcdn.com/ https://code.jquery.com/ https://cdnjs.cloudflare.com/; object-src 'self'"
 }
