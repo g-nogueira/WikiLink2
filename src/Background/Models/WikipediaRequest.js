@@ -3,8 +3,9 @@ class WikipediaRequest extends BaseClass {
     constructor() {
         super(WikipediaRequest);
 
-        this.language = "";
+        this.language = ""; // The language to be searched for.
         this.search = "";
+        this.serachFragment = ""; // The surrounding text of a search.
     }
 
     static fromJson(objString) {

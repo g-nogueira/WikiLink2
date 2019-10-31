@@ -1,12 +1,13 @@
 
 class UserHistory extends BaseClass {
 
-    constructor() {
+    constructor(id, timestamp, search, resultIds) {
         super(UserHistory);
 
-        this.timestamp = Date();
-        this.search = ""; // The term searched.
-        this.resultIds = []; // Wikipedia search result property of name "pageid"
+        this.id = id || 0;
+        this.timestamp = timestamp || Date();
+        this.search = search || ""; // The term searched.
+        this.resultIds = resultIds || []; // Wikipedia search result property of name "pageid"
     }
 
     static fromJson(objString) {

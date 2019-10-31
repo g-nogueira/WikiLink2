@@ -1,13 +1,13 @@
 "use strict";
 
-function wikipedia() {
+class _Wikipedia {
 
-    return {
-        pageGetList,
-        pageGet,
-    };
+    constructor() {
+        this.baseUrl = "wikipedia.org/w/api.php";
 
-    function pageGetList(wikipediaRequest = new WikipediaRequest) {
+    }
+
+    pageGetList(wikipediaRequest = new WikipediaRequest) {
         var request = {
             action: "query",
             format: "json",
@@ -22,6 +22,19 @@ function wikipedia() {
             gpssearch: "Font Aw",
             gpsprofile: "fuzzy"
         }
+
+        var url = `${wikipediaRequest.language}.${_composeURI(baseUrl, request)}`
+
+    }
+
+
+    _composeURI(base, data) {
+        var ret = [];
+
+        for (let d in data)
+            ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+
+        return base + '?' + ret.join('&');
     }
 
 }

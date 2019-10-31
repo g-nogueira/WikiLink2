@@ -34,18 +34,20 @@
         </div>
     </section>
 
-    <main class="list-group" style="font-size: .875em">
+    <main id="userHistoryRows" class="list-group" style="font-size: .875em">
         <div class="list-group-item list-group-item-action">
-            <div class="row align-items-center">
+            <div id="userHistoryRow" data-row="0" class="row align-items-center">
 
                 <div class="col-1 text-center">
-                    <input type="checkbox">
+                    <input id="ckbxSelectRow" type="checkbox">
                 </div>
-                <div>Font, Switzerland</div>
+                <div>
+                    <span id="rowTitle">Font, Switzerland</span>
+                </div>
                 <div class="text-muted text-truncate col">
-                    Former municipality of Switzerland in Fribourg Former municipality of Switzerland in Fribourg
+                    <span id="rowDescription">Former municipality of Switzerland in Fribourg Former municipality of Switzerland in Fribourg</span>
                 </div>
-                <div class="btn-group btn-group-sm ml-auto" role="group">
+                <div id="rowOptions" class="btn-group btn-group-sm ml-auto" role="group">
                     <button class="btn btn-outline-primary"><i class="far fa-star fa-xs"></i></button>
                     <button class="btn btn-outline-primary"><i class="fas fa-external-link-alt fa-xs"></i></button>
                     <button class="btn btn-outline-primary"><i class="fas fa-cloud-upload-alt fa-xs"></i></button>
@@ -59,7 +61,10 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="../init.js"></script>
+    <script src="../parser.js"></script>
+    <script src="UserHistoryRow.js"></script>
+    <script src="Startup.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>

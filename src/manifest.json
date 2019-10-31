@@ -14,10 +14,16 @@
 			"Background/Models/BaseClass.js",
 			"Background/Enums/KeyCode.js",
 			"Background/Models/UserPreference.js",
-			"Background/Data/storage.js",
-			"Background/API/userPreferences.js",
+			"Background/Models/UserHistory.js",
+			"Background/Models/WikipediaRequest.js",
+			"Background/Models/WikipediaResult.js",
+			"Background/Data/Storage.js",
+			"Background/API/_UserPreferences.js",
+			"Background/API/_UserHistory.js",
+			"Background/API/_Wikipedia.js",
+			"Background/API/API.js",
 			"Background/Data/Seeding.js",
-			"Background/init.js"
+			"Background/Startup.js"
 		],
 		"persistence": true
 	},
@@ -29,7 +35,7 @@
 	},
 	"content_scripts": [{
 		"matches": ["<all_urls>"],
-		"js": ["Pages/ContentScripts/index.js"],
+		"js": ["Pages/ContentScripts/Startup.js"],
 		"css": ["Pages/ContentScripts/styles.css"],
 		"run_at": "document_end"
 	}],

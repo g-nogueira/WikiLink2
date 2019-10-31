@@ -7,7 +7,7 @@
     });
 
     function parseResources() {
-        var selector = "[data-rsc]"; 
+        var selector = "[data-rsc]";
         var attr = "data-rsc";
 
         $(selector).each((i, el) => {
