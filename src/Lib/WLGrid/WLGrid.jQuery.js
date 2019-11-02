@@ -33,7 +33,7 @@ function wlGrid(options) {
         this.parentNode.replaceChild(GRID.wrapper, this);
         GRID.wrapper.append(GRID.header);
         GRID.wrapper.append(GRID.body);
-        GRID.body.append(...GRID.rows(options.datasource))
+        GRID.body.append(...GRID.rows(options.datasource));
     });
 }
 

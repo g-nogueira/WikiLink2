@@ -1,4 +1,4 @@
-import BaseClass from "./BaseClass.js"
+import BaseClass from "./BaseClass.js";
 
 export default class UserHistory extends BaseClass {
 
