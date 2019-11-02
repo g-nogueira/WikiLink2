@@ -8,10 +8,15 @@
     }
 
     function populateHistory() {
+
         // Returns Array<UserHistory>
         var histories = API.UserHistory.getAll();
-        histories.forEach(history => {
-            $("#userHistoryRows").append(new UserHistoryRow(history).element);
+
+        $("#userHistoryRows").WLGrid({
+            datasource: histories,
+            dataIdField: "id",
+            dataTitleField: "search",
+            dataDescriptionField: "search"
         });
     }
 })();

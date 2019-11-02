@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title data-i18n="Pages_Options_Title"></title>
 
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="../../Lib/WLGrid/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
@@ -34,35 +34,14 @@
         </div>
     </section>
 
-    <main id="userHistoryRows" class="list-group" style="font-size: .875em">
-        <div class="list-group-item list-group-item-action">
-            <div id="userHistoryRow" data-row="0" class="row align-items-center">
+    <div id="userHistoryRows"></div>
 
-                <div class="col-1 text-center">
-                    <input id="ckbxSelectRow" type="checkbox">
-                </div>
-                <div>
-                    <span id="rowTitle">Font, Switzerland</span>
-                </div>
-                <div class="text-muted text-truncate col">
-                    <span id="rowDescription">Former municipality of Switzerland in Fribourg Former municipality of Switzerland in Fribourg</span>
-                </div>
-                <div id="rowOptions" class="btn-group btn-group-sm ml-auto" role="group">
-                    <button class="btn btn-outline-primary"><i class="far fa-star fa-xs"></i></button>
-                    <button class="btn btn-outline-primary"><i class="fas fa-external-link-alt fa-xs"></i></button>
-                    <button class="btn btn-outline-primary"><i class="fas fa-cloud-upload-alt fa-xs"></i></button>
-                    <button class="btn btn-outline-primary"><i class="fas fa-times fa-xs"></i></button>
-                </div>
-            </div>
-        </div>
-    </main>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="../parser.js"></script>
-    <script src="UserHistoryRow.js"></script>
+    <script src="../../Lib/RscParser/parser.js"></script>
+    <script src="../../Lib/WLGrid/WLGrid.js"></script>
     <script src="Startup.js"></script>
     <script src="index.js"></script>
 </body>
