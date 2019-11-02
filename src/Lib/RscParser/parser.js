@@ -11,7 +11,7 @@
 
         $(selector).each((i, el) => {
             let rscPath = el.dataset.rsc;
-            let chromePath = chrome.runtime.getURL(rscPath)
+            let chromePath = chrome.runtime.getURL(rscPath);
             el.setAttribute("src", chromePath);
         });
 
@@ -23,12 +23,12 @@
 
         $(selector).each((i, el) => {
             let translationName = el.dataset.i18n;
-            let translationValue = chrome.i18n.getMessage(translationName)
+            let translationValue = chrome.i18n.getMessage(translationName);
 
             el.innerHTML = translationValue;
         });
     }
-    chrome.runtime.getURL("Resources/Images/01wikilink16.png")
+    chrome.runtime.getURL("Resources/Images/01wikilink16.png");
 
 
 })();

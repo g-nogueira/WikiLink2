@@ -1,4 +1,4 @@
-import BaseClass from "../Models/BaseClass.js";
+import BaseClass from '../Models/BaseClass.js';
 
 export default class KeyCode extends BaseClass {
 
@@ -34,7 +34,7 @@ export default class KeyCode extends BaseClass {
      */
     static getKeyCode(keyName) {
         for (const entry of Object.entries(KeyCode._keys())) {
-            if (entry[1] == keyName) {
+            if (entry[1] === keyName) {
                 return entry[0];
             }
         }

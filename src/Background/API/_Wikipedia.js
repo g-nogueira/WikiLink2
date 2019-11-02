@@ -29,8 +29,9 @@ export default class _Wikipedia {
     _composeURI(base, data) {
         var ret = [];
 
-        for (let d in data)
+        for (let d in data) {
             ret.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
+        }
 
         return `${base}?${ret.join("&")}`;
     }
