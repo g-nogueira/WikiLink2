@@ -1,5 +1,6 @@
+import BaseClass from '../Models/BaseClass.js';
 
-class KeyCode extends BaseClass {
+export default class KeyCode extends BaseClass {
 
     constructor() {
         super(KeyCode);

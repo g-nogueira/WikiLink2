@@ -1,6 +1,8 @@
-"use strict";
+import storage from "./storage.js"
+import UserPreference from "../Models/UserPreference.js";
+import KeyCode from "../Enums/KeyCode.js";
 
-class Seeding {
+export default class Seeding {
 
     constructor() {
 

@@ -1,5 +1,6 @@
+import BaseClass from "./BaseClass.js"
 
-class UserHistory extends BaseClass {
+export default class UserHistory extends BaseClass {
 
     constructor(id, timestamp, search, resultIds) {
         super(UserHistory);

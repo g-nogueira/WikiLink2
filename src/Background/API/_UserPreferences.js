@@ -1,6 +1,4 @@
-"use strict";
-
-class _UserPreferences {
+export default class _UserPreferences {
 
     constructor() { }
 

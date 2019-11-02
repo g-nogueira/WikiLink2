@@ -1,5 +1,6 @@
+import BaseClass from './BaseClass.js';
 
-class UserPreference extends BaseClass {
+export default class UserPreference extends BaseClass {
 
     constructor() {
         super(UserPreference);

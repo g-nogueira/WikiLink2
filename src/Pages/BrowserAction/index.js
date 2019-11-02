@@ -1,22 +1,19 @@
-(() => {
-    "use strict";
+import API from './Startup.js';
 
-    init();
+init();
 
-    function init() {
-        populateHistory();
-    }
+function init() {
+    populateHistory();
+}
 
-    function populateHistory() {
+function populateHistory() {
 
-        // Returns Array<UserHistory>
-        var histories = API.UserHistory.getAll();
+    var histories = API.UserHistory.getAll();
 
-        $("#userHistoryRows").WLGrid({
-            datasource: histories,
-            dataIdField: "id",
-            dataTitleField: "search",
-            dataDescriptionField: "search"
-        });
-    }
-})();
+    $("#userHistoryGrid").WLGrid({
+        datasource: histories,
+        dataIdField: "id",
+        dataTitleField: "search",
+        dataDescriptionField: "search"
+    });
+}

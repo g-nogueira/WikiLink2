@@ -1,6 +1,8 @@
-"use strict";
+import _UserHistory from './_UserHistory.js';
+import _UserPreferences from './_UserPreferences.js';
+import _Wikipedia from './_Wikipedia.js';
 
-class API {
+export default class API {
 
     constructor() { }
 

@@ -10,21 +10,7 @@
 	},
 	"options_page": "Pages/Options/index.html",
 	"background": {
-		"scripts": [ 
-			"Background/Models/BaseClass.js",
-			"Background/Enums/KeyCode.js",
-			"Background/Models/UserPreference.js",
-			"Background/Models/UserHistory.js",
-			"Background/Models/WikipediaRequest.js",
-			"Background/Models/WikipediaResult.js",
-			"Background/Data/Storage.js",
-			"Background/API/_UserPreferences.js",
-			"Background/API/_UserHistory.js",
-			"Background/API/_Wikipedia.js",
-			"Background/API/API.js",
-			"Background/Data/Seeding.js",
-			"Background/Startup.js"
-		],
+		"page": "Background/index.html",
 		"persistence": true
 	},
 	"default_locale": "en",

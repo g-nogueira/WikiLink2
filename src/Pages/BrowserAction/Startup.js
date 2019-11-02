@@ -1,8 +1,4 @@
-(() => {
-    "use strict";
+const background = chrome.extension.getBackgroundPage();
+const API = new background.API();
 
-    const background = chrome.extension.getBackgroundPage();
-
-    window.API = new background.API();
-
-})();
+export default API;

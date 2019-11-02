@@ -1,6 +1,6 @@
-"use strict";
+import UserHistory from '../Models/UserHistory.js'
 
-class _UserHistory {
+export default class _UserHistory {
 
     constructor() { }
 

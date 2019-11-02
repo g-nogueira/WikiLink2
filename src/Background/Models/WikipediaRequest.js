@@ -1,4 +1,6 @@
-class WikipediaRequest extends BaseClass {
+import BaseClass from './BaseClass.js';
+
+export default class WikipediaRequest extends BaseClass {
 
     constructor() {
         super(WikipediaRequest);

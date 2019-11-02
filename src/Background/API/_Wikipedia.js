@@ -1,6 +1,4 @@
-"use strict";
-
-class _Wikipedia {
+export default class _Wikipedia {
 
     constructor() {
         this.baseUrl = "wikipedia.org/w/api.php";
@@ -21,9 +19,9 @@ class _Wikipedia {
             exsectionformat: "plain",
             gpssearch: "Font Aw",
             gpsprofile: "fuzzy"
-        }
+        };
 
-        var url = `${wikipediaRequest.language}.${_composeURI(baseUrl, request)}`
+        var url = `${wikipediaRequest.language}.${_composeURI(baseUrl, request)}`;
 
     }
 
@@ -32,9 +30,9 @@ class _Wikipedia {
         var ret = [];
 
         for (let d in data)
-            ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+            ret.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
 
-        return base + '?' + ret.join('&');
+        return `${base}?${ret.join("&")}`;
     }
 
 }

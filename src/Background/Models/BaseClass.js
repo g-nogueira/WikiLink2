@@ -1,5 +1,4 @@
-
-class BaseClass {
+export default class BaseClass {
 
     constructor(type) {
         this.type = type;
