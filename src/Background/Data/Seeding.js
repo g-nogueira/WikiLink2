@@ -1,4 +1,4 @@
-import storage from "./storage.js"
+import storage from "./storage.js";
 import UserPreference from "../Models/UserPreference.js";
 import KeyCode from "../Enums/KeyCode.js";
 

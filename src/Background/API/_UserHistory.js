@@ -1,4 +1,4 @@
-import UserHistory from '../Models/UserHistory.js'
+import UserHistory from "../Models/UserHistory.js"
 
 export default class _UserHistory {
 

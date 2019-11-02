@@ -1,4 +1,4 @@
-import API from './Startup.js';
+import API from "./Startup.js";
 
 init();
 

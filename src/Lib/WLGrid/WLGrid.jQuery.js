@@ -1,4 +1,4 @@
-import WLGrid from './WLGrid.Class.js';
+import WLGrid from "./WLGrid.Class.js";
 
 export default function extendjQuery() {
     $.fn.uuidv4 = uuidv4;

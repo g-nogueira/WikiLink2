@@ -1,13 +1,13 @@
-import API from './API/API.js';
+import API from "./API/API.js";
 
-import KeyCode from './Enums/KeyCode.js';
+import KeyCode from "./Enums/KeyCode.js";
 
-import UserPreference from './Models/UserPreference.js';
-import UserHistory from './Models/UserHistory.js';
-import WikipediaRequest from './Models/WikipediaRequest.js';
-import WikipediaResult from './Models/WikipediaResult.js';
+import UserPreference from "./Models/UserPreference.js";
+import UserHistory from "./Models/UserHistory.js";
+import WikipediaRequest from "./Models/WikipediaRequest.js";
+import WikipediaResult from "./Models/WikipediaResult.js";
 
-import Seeding from './Data/Seeding.js';
+import Seeding from "./Data/Seeding.js";
 
 
 (() => {

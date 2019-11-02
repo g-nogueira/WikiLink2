@@ -31,7 +31,10 @@ export default class WLGrid {
     get header() {
         if (!this._header) {
             this._header = $.parseHTML(`<div class="py-2 pl-4"><div class="row align-items-center"><input type="checkbox"></div></div>`)[0];
+
+
         }
+
         return this._header;
     }
 
