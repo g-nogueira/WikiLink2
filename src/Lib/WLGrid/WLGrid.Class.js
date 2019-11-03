@@ -202,21 +202,23 @@ export default class WLGrid {
         // selected() call is a the same as get request.
         if (!rowUid) {
             return this._selected;
+        } else {
+
+            if (action === "remove") {
+                // Uncheck
+                this._selected.delete(rowUid);
+            }
+            else if (action === "add" || !action) {
+                // Check
+                this._selected.add(rowUid);
+            }
+
+            $(this.header("counter")).toggleClass("muted", !this._selected.size);
+            this.header("counter").textContent = this._selected.size;
+
+            return this._selected;
         }
 
-        if (action === "remove") {
-            // Uncheck
-            this._selected.delete(rowUid);
-        }
-        else if (action === "add" || !action) {
-            // Check
-            this._selected.add(rowUid);
-        }
-
-        $(this.header("counter")).toggleClass("muted", !this._selected.size);
-        this.header("counter").textContent = this._selected.size;
-
-        return this._selected;
     }
 
     async _read() {
