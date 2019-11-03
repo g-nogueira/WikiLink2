@@ -20,7 +20,7 @@ export default class Seeding {
         var promises = [];
 
         // Sending all storage_set requests.
-        seeds.forEach(data => promises.push(Storage.set(data)));
+        seeds.forEach((data) => promises.push(Storage.set(data)));
 
         return Promise.all(promises);
     }
@@ -43,9 +43,13 @@ export default class Seeding {
 
         var userHistories = new UserHistory([
             new UserHistoryFragment(0, new Date(), "Js", [6, 18, 221, 338]),
-            new UserHistoryFragment(1, new Date(), "Angular", [4, 21, 482, 348]),
-            new UserHistoryFragment(2, new Date(), "JSON", [340, 348, 298, 53]),
-            new UserHistoryFragment(3, new Date(), "The Lion King", [518, 1832, 48, 3]),
+            new UserHistoryFragment(1, new Date(), "JSON", [340, 348, 298, 53]),
+            new UserHistoryFragment(2, new Date(), "Angular", [4, 21, 482, 348]),
+            new UserHistoryFragment(3, new Date(), "JSON", [340, 348, 298, 53]),
+            new UserHistoryFragment(4, new Date(), "The Lion King", [518, 1832, 48, 3]),
+            new UserHistoryFragment(5, new Date(), "JSON", [340, 348, 298, 53]),
+            new UserHistoryFragment(6, new Date(), "The Lion King", [518, 1832, 48, 3]),
+            new UserHistoryFragment(7, new Date(), "Js", [6, 18, 221, 338]),
         ]);
 
         // OTHER SETTINGS

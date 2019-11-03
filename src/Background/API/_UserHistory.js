@@ -28,7 +28,7 @@ export default class _UserHistory {
 
     async delete(id) {
         var all = await this.getAll();
-        var result = all.all.filter(el => el.id === id)[0];
+        var result = all.all.filter((el) => el.id === id)[0];
         var index = all.all.indexOf(result);
 
         all.all.splice(index, 1);

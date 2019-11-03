@@ -36,33 +36,52 @@ export default class WLGrid {
         return this._wrapper;
     }
 
-    get header() {
+    /**
+     * @param {string} type The element to retrieve from the header.
+     * @returns {HTMLDivElement}
+     */
+    header(type) {
         if (!this._header) {
             const CKBX_ID = $().uuidv4();
+            const COUNTER_ID = $().uuidv4();
             const that = this;
 
-            this._header = $.parseHTML(`<div class="py-2 pl-4"><div class="row align-items-center"><input data-uid=${CKBX_ID} type="checkbox"></div></div>`)[0];
+            this._uidEnum = {
+                counter: COUNTER_ID
+            };
 
+            this._header = $.parseHTML(`<div class="py-2 pl-4"><div></div></div>`)[0];
+            this._header.firstChild.appendChild($.parseHTML(`<input type="checkbox" data-uid="${CKBX_ID}">`)[0]);
+            this._header.firstChild.appendChild($.parseHTML(`<span class="mx-2 muted text-muted" style="font-size: .9rem;" data-uid="${COUNTER_ID}">0</span>`)[0]);
 
             this._registerEvent({
                 owner: this._header,
-                target: "input[type=checkbox]",
+                target: `[data-uid=${CKBX_ID}]`,
                 type: "change",
-                listener: function (e) {
+                listener(e) {
                     // Checks all rows.
                     that.rows().forEach((row) => {
-                        $(row).find("input[type=checkbox]")[0].checked = this.checked;
+                        let el = $(row).find("input[type=checkbox]")[0]
+                        el.click();
                     });
+
                 }
             });
+        }
+
+        if (type) {
+            return $(this._header).find(`[data-uid=${this._uidEnum[type]}]`)[0];
         }
 
         return this._header;
     }
 
+    /**
+     * @returns {HTMLDivElement}
+     */
     get body() {
         if (!this._body) {
-            this._body = $.parseHTML(`<div class="list-group" style="font-size: .875em"></div>`)[0];
+            this._body = $.parseHTML(`<div class="list-group overflow-auto" style="font-size: .875em; max-height: 500px;"></div>`)[0];
         }
         return this._body;
     }
@@ -77,8 +96,8 @@ export default class WLGrid {
      */
     row(data) {
 
-        var el = this._data.filter(r => r[this.fieldId] === data[this.fieldId])[0];
-        var row = this.rows().filter(r => r.dataset.uid === el._uid)[0];
+        var el = this._data.filter((r) => r[this.fieldId] === data[this.fieldId])[0];
+        var row = this.rows().filter((r) => r.dataset.uid === el._uid)[0];
 
         return row;
     }
@@ -88,7 +107,7 @@ export default class WLGrid {
      */
     rows() {
         if (!this._rows) {
-            this._rows = this._data.map(data => {
+            this._rows = this._data.map((data) => {
                 let row = this._row(data);
                 data._uid = row.dataset.uid;
 
@@ -103,12 +122,14 @@ export default class WLGrid {
      * @returns {HTMLDivElement}
      */
     _row(data) {
+        const that = this;
         const ROW_ID = $().uuidv4();
+        const CKBX_ID = $().uuidv4();
 
         var rowEl = $.parseHTML(`<div data-uid="${ROW_ID}" class="list-group-item list-group-item-action">
                     <div id="listItemRow" class="row align-items-center">
                     <div class="col-1 text-center">
-                        <input id="ckbxSelectRow" type="checkbox">
+                        <input id="ckbxSelectRow" type="checkbox" data-uid="${CKBX_ID}">
                     </div>
                     <div>
                         <span id="rowTitle">${data[this.fieldTitle]}</span>
@@ -150,13 +171,59 @@ export default class WLGrid {
                 listener: (e) => this._transaction.delete(data)
             });
         }
+
+        this._registerEvent({
+            owner: rowEl,
+            target: `[data-uid=${CKBX_ID}]`,
+            type: "change",
+            listener(e) {
+                if (this.checked) {
+                    that.selected(ROW_ID);
+                } else {
+                    that.selected(ROW_ID, "remove");
+                }
+            }
+        });
         return rowEl;
+    }
+
+    /**
+     * 
+     * @param {string} rowUid 
+     * @param {"add" | "remove"} action 
+     * @return {Set}
+     */
+    selected(rowUid, action) {
+        // Value Initializatio.
+        if (!this._selected) {
+            this._selected = new Set();
+        }
+
+        // selected() call is a the same as get request.
+        if (!rowUid) {
+            return this._selected;
+        }
+
+        if (action === "remove") {
+            // Uncheck
+            this._selected.delete(rowUid);
+        }
+        else if (action === "add" || !action) {
+            // Check
+            this._selected.add(rowUid);
+        }
+
+        $(this.header("counter")).toggleClass("muted", !this._selected.size);
+        this.header("counter").textContent = this._selected.size;
+
+        return this._selected;
     }
 
     async _read() {
         this._data = await this._transaction.read();
 
-        this._rows = undefined;
+        this._rows = null;
+
         while (this.body.firstChild) {
             this.body.removeChild(this.body.firstChild);
         }
@@ -167,8 +234,8 @@ export default class WLGrid {
 
     async refresh() {
         this._data = await this._transaction.read();
-        this._wrapper = undefined;
-        this.wrapper.append(this.header);
+        this._wrapper = null;
+        this.wrapper.append(this.header());
         this.wrapper.append(this.body);
         this.body.append(...this.rows(this._data));
 
