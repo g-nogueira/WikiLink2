@@ -1,25 +1,27 @@
 import BaseClass from "./BaseClass.js";
+import UserHistoryFragment from "./UserHistoryFragment.js";
 
 export default class UserHistory extends BaseClass {
 
-    constructor(id, timestamp, search, resultIds) {
+    /**
+     * 
+     * @param {UserHistoryFragment[]} userHistories 
+     */
+    constructor(userHistories) {
         super(UserHistory);
+        this.all = userHistories;
 
-        this.id = id || 0;
-        this.timestamp = timestamp || Date();
-        this.search = search || ""; // The term searched.
-        this.resultIds = resultIds || []; // Wikipedia search result property of name "pageid"
     }
 
     static fromJson(objString) {
-        return super.fromJson(objString, UserPreference);
+        return super.fromJson(objString, UserHistory);
     }
 
     static fromUri(uriString) {
-        return super.fromUri(uriString, UserPreference);
+        return super.fromUri(uriString, UserHistory);
     }
 
     static fromObject(obj) {
-        return super.fromObject(obj, UserPreference);
+        return super.fromObject(obj, UserHistory);
     }
 }

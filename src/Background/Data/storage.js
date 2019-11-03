@@ -1,10 +1,7 @@
-export default function storage() {
-    return {
-        get,
-        set
-    };
+export default class Storage {
+    constructor() { }
 
-    function set(data) {
+    static set(data) {
         return new Promise((resolve, reject) => {
             chrome.storage.sync.set({
                 [data.constructor.name]: JSON.stringify(data)
@@ -19,7 +16,7 @@ export default function storage() {
         });
     }
 
-    function get(type) {
+    static get(type) {
         return new Promise((resolve, reject) => {
             chrome.storage.sync.get(type.name,
                 (obj) => {

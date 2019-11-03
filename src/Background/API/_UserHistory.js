@@ -1,16 +1,17 @@
 import UserHistory from "../Models/UserHistory.js";
+import Storage from "../Data/storage.js";
 
 export default class _UserHistory {
 
-    constructor() { }
+    constructor() {
+    }
 
-    getAll() {
-        return [
-            new UserHistory(0, new Date(), "Js", [6, 18, 221, 338]),
-            new UserHistory(1, new Date(), "Angular", [4, 21, 482, 348]),
-            new UserHistory(2, new Date(), "JSON", [340, 348, 298, 53]),
-            new UserHistory(3, new Date(), "The Lion King", [518, 1832, 48, 3]),
-        ]
+    async getAll() {
+
+        /** @type {UserHistory} */
+        var history = await Storage.get(UserHistory);
+
+        return history;
     }
 
     get(id) {
@@ -23,5 +24,15 @@ export default class _UserHistory {
 
     insert() {
 
+    }
+
+    async delete(id) {
+        var all = await this.getAll();
+        var result = all.all.filter(el => el.id === id)[0];
+        var index = all.all.indexOf(result);
+
+        all.all.splice(index, 1);
+
+        Storage.set(all);
     }
 }

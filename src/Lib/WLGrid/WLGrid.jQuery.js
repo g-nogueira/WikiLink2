@@ -7,34 +7,34 @@ export default function extendjQuery() {
 
 /**
  * @param {object} options
- * @param {any[]} options.datasource 
+ * @param {any[]} [options.datasource]
+ * @param {object} [options.transaction]
+ * @param {Function} [options.transaction.create]
+ * @param {Function} [options.transaction.read]
+ * @param {Function} [options.transaction.update]
+ * @param {Function} [options.transaction.delete]
  * @param {object} options.model
  * @param {number|string} options.dataIdField
  * @param {string} options.dataTitleField
  * @param {string} options.dataDescriptionField
  * @this {HTMLElement}
  */
-function wlGrid(options) {
+async function wlGrid(options) {
 
     // Setting default options.
     // var settings = $.extend({
     //     datasource: [],
     // }, options);
 
-    if (!options) {
-        return this.data(WLGrid.name);
+    if (options.transaction && options.transaction.read && typeof options.transaction.read === "function") {
+        options.datasource = await options.transaction.read();
     }
 
-
-    return this.each(function () {
-
+    this.each(async function () {
         const GRID = new WLGrid(options, this.id);
-
-        this.parentNode.replaceChild(GRID.wrapper, this);
-        GRID.wrapper.append(GRID.header);
-        GRID.wrapper.append(GRID.body);
-        GRID.body.append(...GRID.rows(options.datasource));
+        this.parentNode.replaceChild(await GRID.refresh(), this);
     });
+
 }
 
 /** 

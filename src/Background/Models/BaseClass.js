@@ -43,7 +43,9 @@ export default class BaseClass {
         }
 
         Object.keys(instance).forEach(k => {
-            instance[k] = invariantCaseObj[k.toLowerCase()];
+            if (k !== "type") {
+                instance[k] = invariantCaseObj[k.toLowerCase()];
+            }
         });
 
         return instance;

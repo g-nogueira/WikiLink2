@@ -1,4 +1,4 @@
-import BaseClass from '../Models/BaseClass.js';
+import BaseClass from "../Models/BaseClass.js";
 
 export default class KeyCode extends BaseClass {
 
