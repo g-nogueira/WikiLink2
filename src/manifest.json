@@ -22,7 +22,7 @@
 	"content_scripts": [{
 		"matches": ["<all_urls>"],
 		"js": ["Pages/ContentScripts/Startup.js"],
-		"css": ["Pages/ContentScripts/styles.css"],
+		"css": [],
 		"run_at": "document_end"
 	}],
 	"permissions": [
@@ -31,7 +31,9 @@
 		"<all_urls>"
 	],
 	"web_accessible_resources": [
-		"Resources/Images/*"
+		"Resources/Images/*",
+		"Lib/**/*.*",
+		"Pages/ContentScripts/WLWidget.html"
 	],
-	"content_security_policy": "script-src 'self' https://stackpath.bootstrapcdn.com/ https://code.jquery.com/ https://cdnjs.cloudflare.com/; object-src 'self'"
+	"content_security_policy": "script-src 'self' https://stackpath.bootstrapcdn.com/ https://code.jquery.com/ https://cdnjs.cloudflare.com/ 'sha256-wLPXd1NWX8JeeFXY5LMNud2+gXl1NQYRjl0CD/IKMDU='; object-src 'self'"
 }
