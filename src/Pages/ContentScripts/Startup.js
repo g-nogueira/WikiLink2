@@ -2,6 +2,7 @@
 
 (async () => {
 
+    const PATH_WLWIDGET = chrome.extension.getURL('Lib/WLWidget/WLWidget.js');
     const PATH_PARSER = chrome.extension.getURL("Lib/RscParser/parser.js");
     const PATH_CONTENT_SCRIPT = chrome.extension.getURL("Pages/ContentScripts/WLWidget.html");
     const PATH_JQUERY = chrome.extension.getURL("Lib/jQUery/jquery-3.4.1.min.js");
