@@ -2,12 +2,12 @@ import BaseClass from "./BaseClass.js";
 
 export default class WikipediaRequest extends BaseClass {
 
-    constructor() {
+    constructor(language, search, searchFragment) {
         super(WikipediaRequest);
 
-        this.language = ""; // The language to be searched for.
-        this.search = "";
-        this.serachFragment = ""; // The surrounding text of a search.
+        this.language = language; // The language to be searched for.
+        this.search = search;
+        this.searchFragment = searchFragment; // The surrounding text of a search.
     }
 
     static fromJson(objString) {

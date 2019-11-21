@@ -1,3 +1,5 @@
+import WikipediaRequest from "../Models/WikipediaRequest.js";
+
 export default class _Wikipedia {
 
     constructor() {
@@ -5,7 +7,11 @@ export default class _Wikipedia {
 
     }
 
-    pageGetList(wikipediaRequest = new WikipediaRequest) {
+    /**
+     * 
+     * @param {WikipediaRequest} wikipediaRequest 
+     */
+    async getList(wikipediaRequest = new WikipediaRequest) {
         var request = {
             action: "query",
             format: "json",
@@ -17,12 +23,17 @@ export default class _Wikipedia {
             exsentences: "10",
             exintro: 1,
             exsectionformat: "plain",
-            gpssearch: "Font Aw",
+            gpssearch: wikipediaRequest.search,
             gpsprofile: "fuzzy"
         };
 
-        var url = `${wikipediaRequest.language}.${_composeURI(baseUrl, request)}`;
+        var url = `https://${wikipediaRequest.language}.${this._composeURI(this.baseUrl, request)}`;
 
+        return new Promise(async (resolve, reject) => {
+            var response = await fetch(url);
+
+            resolve(response);
+        });
     }
 
 
@@ -35,5 +46,6 @@ export default class _Wikipedia {
 
         return `${base}?${ret.join("&")}`;
     }
+
 
 }

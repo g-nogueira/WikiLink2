@@ -21,7 +21,7 @@
 	},
 	"content_scripts": [{
 		"matches": ["<all_urls>"],
-		"js": ["Pages/ContentScripts/Startup.js", "Pages/ContentScripts/Widget.js"],
+		"js": ["Lib/jQuery/jquery-3.4.1.min.js", "Pages/ContentScripts/Startup.js", "Pages/ContentScripts/Widget.js"],
 		"css": [],
 		"run_at": "document_end"
 	}],
@@ -33,6 +33,10 @@
 	"web_accessible_resources": [
 		"Resources/Images/*",
 		"Lib/**/*.*",
+		"Background/API/*.js",
+		"Background/Enums/*.js",
+		"Background/Models/*.js",
+		"Background/Data/*.js",
 		"Pages/ContentScripts/WLWidget.html"
 	],
 	"content_security_policy": "script-src 'self' https://stackpath.bootstrapcdn.com/ https://code.jquery.com/ https://cdnjs.cloudflare.com/ 'sha256-wLPXd1NWX8JeeFXY5LMNud2+gXl1NQYRjl0CD/IKMDU='; object-src 'self'"

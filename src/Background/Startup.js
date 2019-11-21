@@ -8,11 +8,15 @@ import WikipediaRequest from "./Models/WikipediaRequest.js";
 import WikipediaResult from "./Models/WikipediaResult.js";
 
 import Seeding from "./Data/Seeding.js";
+import BackgroundWiring from "../Lib/RequestIntercepter/BackgroundWiring.js";
 
 
 (() => {
 
     chrome.runtime.onInstalled.addListener(initializeDB);
+
+    var wiring = new BackgroundWiring();
+    wiring.Listen();
 
     window.API = API;
     window.Enums = {

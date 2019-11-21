@@ -5,26 +5,27 @@
     const PATH_WLWIDGET = chrome.extension.getURL('Lib/WLWidget/WLWidget.js');
     const PATH_PARSER = chrome.extension.getURL("Lib/RscParser/parser.js");
     const PATH_CONTENT_SCRIPT = chrome.extension.getURL("Pages/ContentScripts/WLWidget.html");
-    const PATH_JQUERY = chrome.extension.getURL("Lib/jQUery/jquery-3.4.1.min.js");
+    const PATH_API = chrome.extension.getURL("Background/API/API.js");
+    const PATH_WIKIPEDIA_REQUEST = chrome.extension.getURL("Background/Models/WikipediaRequest.js");
+    const PATH_BACKGROUND_WIRING = chrome.extension.getURL("Lib/RequestIntercepter/BackgroundWiring.js");
 
 
     /********** IMPORTING MODULES **************/
     const Parser = (await import(PATH_PARSER)).default;
-
+    const BackgroundWiring = (await import(PATH_BACKGROUND_WIRING)).default;
+    const API = new (await import(PATH_API)).default;
+    const Models = {
+        WikipediaRequest: (await import(PATH_WIKIPEDIA_REQUEST)).default
+    };
 
     /********** CREATING HTMLELEMENTS **************/
     var shadowHost = document.createElement("div")
     var shadowRoot = shadowHost.attachShadow({ mode: "open" });
 
     var shadowRootContent = await getMainTemplate();
-    var jQueryScript = getjQueryScript();
 
 
     /********** INSERTING HTMLELEMENTS **************/
-    if (!window.$ || !window.jQuery) {
-        shadowRoot.appendChild(jQueryScript);
-    }
-
     shadowRoot.appendChild(shadowRootContent);
     document.body.appendChild(shadowHost);
 
@@ -36,8 +37,13 @@
     /********** DECLARING PUBLIC VAR **************/
     window.wikilink2 = {
         shadowHost,
-        shadowRoot
-    }
+        shadowRoot,
+        API,
+        Models
+    };
+
+    (new BackgroundWiring()).Intercept("fetch");
+    window.dispatchEvent(readyEvent());
 
     function getMainTemplate() {
         return new Promise((resolve) => {
@@ -53,10 +59,13 @@
 
     }
 
-    function getjQueryScript() {
-        let script = document.createElement("script");
-        script.setAttribute("src", PATH_JQUERY);
+    function readyEvent() {
+        var event = new CustomEvent("wl2-ready", {
+            detail: {
+                wikilink2: window.wikilink2
+            }
+        });
 
-        return script;
+        return event;
     }
 })();
