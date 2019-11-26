@@ -12,15 +12,25 @@ window.addEventListener("wl2-ready", (e) => {
         var all = await API.Wikipedia.getList(request);
     })();
 
-    // $("WLWidget", shadowRoot).WLWidget({
-    //     transaction: {
-    //         read: async () => {
-    //             var request = new WikipediaRequest("pt", "Math", "");
-    //             var all = await API.Wikipedia.getList(request);
-    //             return all.all;
-    //         }
-    //     },
-    // });
+    $("WLWidget", shadowRoot).WLWidget({
+        transaction: {
+            read: async () => {
+                var request = new WikipediaRequest("pt", "Math", "");
+                var all = await API.Wikipedia.getList(request);
+                return all;
+            },
+        },
+        dataIdField: "pageId",
+        dataImageUrl: "thumbnail.source",
+        dataTitle: "title",
+        dataDescription: "extract",
+        rowHeight: 50,
+        itemDetail: {
+            transaction: {
+                read: async () => { }
+            }
+        }
+    });
 
 
     function initDOMEvents() {

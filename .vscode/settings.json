@@ -1,6 +1,6 @@
 {
     "files.trimFinalNewlines": true,
-    "html.format.wrapLineLength": 200,
+    "html.format.wrapLineLength": 500,
     "[html]": {
         "editor.formatOnSave": true,
         "editor.wordWrap": "off",

@@ -1,4 +1,4 @@
-export default class WLGrid {
+xport default class WLWidget {
 
     /**
      * @param {object} options
@@ -8,10 +8,16 @@ export default class WLGrid {
      * @param {Function} [options.transaction.read]
      * @param {Function} [options.transaction.update]
      * @param {Function} [options.transaction.delete]
-     * @param {object} options.model
+     * @param {object} [options.itemDetail]
+     * @param {object} [options.itemDetail.transaction]
+     * @param {Function} [options.itemDetail.transaction.read]
+     * @param {Function} [options.itemDetail.transaction.update]
+     * @param {Function} [options.itemDetail.transaction.delete]
      * @param {number|string} options.dataIdField
      * @param {string} options.dataTitleField
      * @param {string} options.dataDescriptionField
+     * @param {string} options.dataImageUrl
+     * @param {number} [options.rowHeight]
      */
     constructor(options, elementId) {
         this.elementId = elementId;
@@ -31,9 +37,25 @@ export default class WLGrid {
 
         if (!this._wrapper) {
             this._wrapper = $.parseHTML(`<div id="${this.elementId}"></div>`)[0];
-            $(this._wrapper).data(WLGrid.name, this);
+            $(this._wrapper).data(WLWidget.name, this);
         }
         return this._wrapper;
+    }
+
+    /**
+     * @returns {HTMLDivElement}
+     */
+    get body() {
+        if (!this._body) {
+            this._body = $.parseHTML(`<div class="list-group overflow-auto" style="font-size: .875em; max-height: 500px;"></div>`)[0];
+        }
+        return this._body;
+    }
+
+    get dataSource() {
+        return {
+            read: () => this._read.call(this)
+        };
     }
 
     /**
@@ -76,21 +98,6 @@ export default class WLGrid {
         return this._header;
     }
 
-    /**
-     * @returns {HTMLDivElement}
-     */
-    get body() {
-        if (!this._body) {
-            this._body = $.parseHTML(`<div class="list-group overflow-auto" style="font-size: .875em; max-height: 500px;"></div>`)[0];
-        }
-        return this._body;
-    }
-
-    get dataSource() {
-        return {
-            read: () => this._read.call(this)
-        };
-    }
     /**
      * @returns {HTMLDivElement}
      */

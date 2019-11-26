@@ -2,7 +2,7 @@ import WLGrid from "./WLWidget.Class.js";
 
 export default function extendjQuery() {
     $.fn.uuidv4 = uuidv4;
-    $.fn.WLGrid = wlGrid;
+    $.fn.WLWidget = wlWidget;
 }
 
 /**
@@ -13,13 +13,19 @@ export default function extendjQuery() {
  * @param {Function} [options.transaction.read]
  * @param {Function} [options.transaction.update]
  * @param {Function} [options.transaction.delete]
- * @param {object} options.model
+ * @param {object} [options.itemDetail]
+ * @param {object} [options.itemDetail.transaction]
+ * @param {Function} [options.itemDetail.transaction.read]
+ * @param {Function} [options.itemDetail.transaction.update]
+ * @param {Function} [options.itemDetail.transaction.delete]
  * @param {number|string} options.dataIdField
  * @param {string} options.dataTitleField
  * @param {string} options.dataDescriptionField
+ * @param {string} options.dataImageUrl
+ * @param {number} [options.rowHeight]
  * @this {HTMLElement}
  */
-async function wlGrid(options) {
+async function WLWidget(options) {
 
     // Setting default options.
     // var settings = $.extend({
@@ -31,8 +37,8 @@ async function wlGrid(options) {
     }
 
     this.each(async function () {
-        const GRID = new WLGrid(options, this.id);
-        this.parentNode.replaceChild(await GRID.refresh(), this);
+        const WIDGET = new WLWidget(options, this.id);
+        this.parentNode.replaceChild(await WIDGET.refresh(), this);
     });
 
 }

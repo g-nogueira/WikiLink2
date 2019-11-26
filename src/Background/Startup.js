@@ -16,7 +16,7 @@ import BackgroundWiring from "../Lib/RequestIntercepter/BackgroundWiring.js";
     chrome.runtime.onInstalled.addListener(initializeDB);
 
     var wiring = new BackgroundWiring();
-    wiring.Listen();
+    wiring.listen();
 
     window.API = API;
     window.Enums = {
