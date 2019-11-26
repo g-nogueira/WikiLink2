@@ -9,10 +9,13 @@ export default class BackgroundWiring {
         var that = this;
 
         if (targetName.toLowerCase() === "fetch") {
+
             window.fetch = new Proxy(window.fetch, {
+                // Executes on fetch call
                 apply(target, thisArg, argumentsList) {
                     let caller = that._getCaller(window.fetch);
 
+                    // If it is called by the current extension, forwards the request
                     if (caller.includes(chrome.runtime.id)) {
                         return that._forwardRequest(targetName, thisArg, argumentsList);
                     } else {
@@ -41,7 +44,7 @@ export default class BackgroundWiring {
 
 
             } else if (target.toLowerCase() === "xmlhttprequest") {
-
+                
             }
 
             return true;

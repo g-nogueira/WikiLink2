@@ -1,4 +1,5 @@
 import WikipediaRequest from "../Models/WikipediaRequest.js";
+import WikipediaResult from "../Models/WikipediaResult.js";
 
 export default class _Wikipedia {
 
@@ -10,6 +11,7 @@ export default class _Wikipedia {
     /**
      * 
      * @param {WikipediaRequest} wikipediaRequest 
+     * @returns {Promise<WikipediaResult>}
      */
     async getList(wikipediaRequest = new WikipediaRequest) {
         var request = {
@@ -31,8 +33,24 @@ export default class _Wikipedia {
 
         return new Promise(async (resolve, reject) => {
             var response = await fetch(url);
+            var wpResult = new WikipediaResult();
 
-            resolve(response);
+            Object.keys(response.query.pages).forEach((pageId) => {
+                let page = response.query.pages[pageId];
+
+                wpResult.pages.push({
+                    extract: page.extract,
+                    title: page.title,
+                    pageId: page.pageid,
+                    thumbnail: page.thumbnail ? {
+                        width: page.thumbnail.width,
+                        height: page.thumbnail.height,
+                        source: page.thumbnail.source
+                    } : null
+                });
+            });
+
+            resolve(wpResult);
         });
     }
 
