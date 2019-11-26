@@ -219,7 +219,7 @@ export default class KeyCode extends BaseClass {
             244: "kanji",
             251: "unlock trackpad (Chrome/Edge)",
             255: "toggle touchpad",
-        }
+        };
     }
 
 }

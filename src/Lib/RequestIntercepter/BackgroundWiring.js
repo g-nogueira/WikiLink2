@@ -5,7 +5,7 @@ export default class BackgroundWiring {
      * Call it on ContentScripts to redirect requests to Background Scripts.
      * @param {string} targetName 
      */
-    Intercept(targetName) {
+    intercept(targetName) {
         var that = this;
 
         if (targetName.toLowerCase() === "fetch") {
@@ -32,7 +32,7 @@ export default class BackgroundWiring {
     /**
      * Call it on Background to complete XMLHTTPRequests.
      */
-    Listen() {
+    listen() {
         chrome.runtime.onMessage.addListener((request, sender, sendResponde) => {
 
             if (request.target.toLowerCase() === "fetch") {
@@ -44,7 +44,7 @@ export default class BackgroundWiring {
 
 
             } else if (target.toLowerCase() === "xmlhttprequest") {
-                
+
             }
 
             return true;
